@@ -1,6 +1,17 @@
 import SiteInput from "../components/SiteInput";
+import React, { useEffect } from "react";
+import { WebsiteCarbonAPI } from "../apis/WebsiteCarbon";
+const testUrl = "https://liftshare.com/uk";
 
 export default function Index() {
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    console.log("Index mounted");
+    WebsiteCarbonAPI.calculate(testUrl).then((data) => {
+      console.log(data);
+    });
+  });
+
   return (
     <div>
       <h1>Website Carbon Footprint Calculator </h1>
